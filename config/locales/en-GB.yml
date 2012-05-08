@@ -20,10 +20,13 @@ en-GB:
           submenu:
             inbox: Inbox
             spam: Spam
+            opt_in: Opt In
             update_notified: Update who gets notified
             edit_confirmation_email: Edit confirmation email
+          opt_in:
+            no_opt_in: No one has opted in yet.
           index:
-            no_inquiries: You have not received any enquiries yet.
+            no_inquiries: You have not received any inquiries yet.
             no_spam: Hooray! You don't have any spam.
           show:
             details: Details

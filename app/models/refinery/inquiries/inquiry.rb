@@ -15,6 +15,7 @@ module Refinery
       acts_as_indexed :fields => [:name, :email, :message, :phone]
 
       default_scope :order => 'created_at DESC'
+      scope :opt_in, where(opt_in: true)
 
       attr_accessible :name, :phone, :message, :email
 

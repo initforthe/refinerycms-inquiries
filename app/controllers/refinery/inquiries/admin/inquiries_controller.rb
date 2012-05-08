@@ -23,6 +23,10 @@ module Refinery
           render :action => 'index'
         end
 
+        def opt_in
+          @inquiries = Refinery::Inquiries::Inquiry.opt_in.page(params[:page])
+        end
+
         def toggle_spam
           find_inquiry
           @inquiry.toggle!(:spam)

@@ -12,6 +12,7 @@ Refinery::Core::Engine.routes.draw do
     namespace :admin, :path => 'refinery' do
       resources :inquiries, :only => [:index, :show, :destroy] do
         get :spam, :on => :collection
+        get :opt_in, :on => :collection
         get :toggle_spam, :on => :member
       end
 

@@ -11,6 +11,8 @@
                 :confirm => t('refinery.admin.delete.message', :title => inquiry.name),
                 :method => :delete -%>
 
+    <%= refinery_icon_tag('email_open.png') if inquiry.opt_in? %>
+
     <%= link_to refinery_icon_tag('zoom.png'), refinery.inquiries_admin_inquiry_path(inquiry),
                 :title => t('.read_inquiry') -%>
 
