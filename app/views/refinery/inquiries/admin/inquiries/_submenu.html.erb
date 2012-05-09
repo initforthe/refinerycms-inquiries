@@ -13,7 +13,7 @@
         <%= link_to t('.spam'), refinery.spam_inquiries_admin_inquiries_path, :class => "spam_empty_icon" %>
       <% end %>
     </li>
-    <li <%= "class='selected'" if params[:action] == "opt_in" %>>
+    <li>
       <%= link_to t('.opt_in'), refinery.opt_in_inquiries_admin_inquiries_path, :class => "email_open_icon" %>
     </li>
     <li>
