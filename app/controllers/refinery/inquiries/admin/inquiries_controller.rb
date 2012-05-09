@@ -1,3 +1,5 @@
+require 'csv'
+
 module Refinery
   module Inquiries
     module Admin
