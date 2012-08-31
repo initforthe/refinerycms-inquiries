@@ -2,6 +2,8 @@ require 'refinerycms-core'
 require 'refinerycms-settings'
 require 'filters_spam'
 require 'acts_as_indexed'
+require 'dragonfly'
+require 'rack/cache'
 
 module Refinery
   autoload :InquiriesGenerator, 'generators/refinery/inquiries/inquiries_generator'
@@ -11,6 +13,9 @@ module Refinery
     require 'refinery/inquiries/configuration'
 
     autoload :Version, 'refinery/inquiries/version'
+
+    autoload :Dragonfly, 'refinery/inquiries/dragonfly'
+    autoload :Validators, 'refinery/inquiries/validators'
 
     class << self
       attr_writer :root

@@ -39,6 +39,7 @@ en:
             phone: Phone
             date: Date
             message: Message
+            file: File
         settings:
           notification_recipients_form:
             inquiry_settings_value_name: Send notifications to
@@ -75,3 +76,8 @@ en:
         email: Email
         phone: Phone
         message: Message
+    errors:
+      models:
+        refinery/inquiries/inquiry:
+          wrong_formats: "File should be one of: %{file_types}"
+          too_big: File should be smaller than %{size} bytes in size

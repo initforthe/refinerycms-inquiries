@@ -5,6 +5,8 @@ module Refinery
 
       isolate_namespace Refinery::Inquiries
 
+      engine_name :refinery_inquiries
+
       initializer "init plugin" do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root

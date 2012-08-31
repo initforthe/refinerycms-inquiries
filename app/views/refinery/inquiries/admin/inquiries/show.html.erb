@@ -72,5 +72,15 @@
         <%= simple_format strip_tags(@inquiry.message), :style => 'margin-top: 0' %>
       </td>
     </tr>
+    <% if @inquiry.file %>
+      <tr>
+        <td>
+          <strong><%= t('.file') %></strong>
+        </td>
+        <td>
+          <%= link_to @inquiry.file.name, @inquiry.file.url %>
+        </td>
+      </tr>
+    <% end %>
   </table>
 </div>
