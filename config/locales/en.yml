@@ -21,6 +21,8 @@ en:
             inbox: Inbox
             spam: Spam
             opt_in: Opt In
+            export: Export
+            export_all: All Inquiries
             update_notified: Update who gets notified
             edit_confirmation_email: Edit confirmation email
           opt_in:

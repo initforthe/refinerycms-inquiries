@@ -27,14 +27,12 @@ module Refinery
 
         def opt_in
           inquiries = Refinery::Inquiries::Inquiry.opt_in.page(params[:page])
-          data = CSV.generate do |csv|
-            csv << ['Name', 'Email']
-            inquiries.each { |i| csv << [i.name, i.email] }
-          end
+          send_csv_data(inquiries, [:name, :email], 'opt_in.csv')
+        end
 
-          send_data data,
-            type: 'text/csv; charset=iso-8859-1; header=present', 
-            disposition: 'attachment; filename=opt_in.csv'
+        def export
+          inquiries = Refinery::Inquiries::Inquiry.all
+          send_csv_data(inquiries, Refinery::Inquiries::Inquiry.column_names.map(&:to_sym))
         end
 
         def toggle_spam
@@ -45,6 +43,18 @@ module Refinery
         end
 
         protected
+
+        def send_csv_data(collection, fields, filename = 'export.csv')
+          data = CSV.generate do |output|
+            output << fields.map { |f| f.to_s.titleize }
+            collection.each do |inquiry|
+              output << fields.map { |f| inquiry.send(f) }
+            end
+          end
+          send_data data, 
+            type: 'text/csv; charset=iso-8859-1; header=present', 
+            disposition: "attachment; filename=#{filename}"
+        end
 
         def find_all_ham
           @inquiries = Refinery::Inquiries::Inquiry.ham

@@ -1,4 +1,4 @@
-<div id='actions'>
+<nav id='actions' class='multilist'>
   <ul>
     <li>
       <%= render "/refinery/admin/search", :url => request.path.gsub("//", "/") %>
@@ -13,9 +13,21 @@
         <%= link_to t('.spam'), refinery.spam_inquiries_admin_inquiries_path, :class => "spam_empty_icon" %>
       <% end %>
     </li>
+  </ul>
+
+  <ul class='collapsible_menu'>
+    <li class='not_a_link'>
+      <%= link_to t('.export'), '#', class: 'email_icon' %>
+    </li>
     <li>
       <%= link_to t('.opt_in'), refinery.opt_in_inquiries_admin_inquiries_path, :class => "email_open_icon" %>
     </li>
+    <li>
+      <%= link_to t('.export_all'), refinery.export_inquiries_admin_inquiries_path, :class => "email_open_icon" %>
+    </li>
+  </ul>
+
+  <ul>
     <li>
       <%= link_to t('.update_notified'),
                     refinery.edit_inquiries_admin_setting_path(:inquiry_notification_recipients, :dialog => true, :height => 300),
@@ -27,5 +39,5 @@
                   :class => "edit_email_icon" %>
     </li>
   </ul>
-</div>
+</nav>
 <% content_for :stylesheets, stylesheet_link_tag('refinery/inquiries/admin/inquiries') %>
