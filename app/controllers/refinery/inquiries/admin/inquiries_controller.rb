@@ -1,3 +1,5 @@
+require 'csv'
+
 module Refinery
   module Inquiries
     module Admin
@@ -21,6 +23,18 @@ module Refinery
         def spam
           self.index
           render :action => 'index'
+        end
+
+        def opt_in
+          inquiries = Refinery::Inquiries::Inquiry.opt_in.page(params[:page])
+          data = CSV.generate do |csv|
+            csv << ['Name', 'Email']
+            inquiries.each { |i| csv << [i.name, i.email] }
+          end
+
+          send_data data,
+            type: 'text/csv; charset=iso-8859-1; header=present', 
+            disposition: 'attachment; filename=opt_in.csv'
         end
 
         def toggle_spam

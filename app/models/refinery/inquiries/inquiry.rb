@@ -15,8 +15,9 @@ module Refinery
       acts_as_indexed :fields => [:name, :email, :message, :phone]
 
       default_scope :order => 'created_at DESC'
+      scope :opt_in, where(opt_in: true)
 
-      attr_accessible :name, :phone, :message, :email
+      attr_accessible :name, :phone, :message, :email, :opt_in
 
       def self.latest(number = 7, include_spam = false)
         include_spam ? limit(number) : ham.limit(number)

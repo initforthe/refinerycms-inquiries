@@ -1,17 +1,20 @@
 <div id='actions'>
   <ul>
     <li>
-      <%= render :partial => "/refinery/admin/search", :locals => {:url => request.path} %>
+      <%= render "/refinery/admin/search", :url => request.path.gsub("//", "/") %>
     </li>
     <li <%= "class='selected'" if params[:action] == "index" %>>
       <%= link_to t('.inbox'), refinery.inquiries_admin_inquiries_path, :class => "email_icon" %>
     </li>
     <li <%= "class='selected'" if params[:action] == "spam" %>>
-      <% if @spam_count > 0  %>
+      <% if @spam_count.to_i > 0  %>
         <%= link_to "#{t('.spam')} (#{@spam_count})", refinery.spam_inquiries_admin_inquiries_path, :class => "spam_icon" %>
       <% else %>
         <%= link_to t('.spam'), refinery.spam_inquiries_admin_inquiries_path, :class => "spam_empty_icon" %>
       <% end %>
+    </li>
+    <li>
+      <%= link_to t('.opt_in'), refinery.opt_in_inquiries_admin_inquiries_path, :class => "email_open_icon" %>
     </li>
     <li>
       <%= link_to t('.update_notified'),
@@ -25,3 +28,4 @@
     </li>
   </ul>
 </div>
+<% content_for :stylesheets, stylesheet_link_tag('refinery/inquiries/admin/inquiries') %>
